@@ -24,19 +24,27 @@ MongoClient.connect('mongodb://localhost:27017/Mytodo', (err, client) => {
 //     console.log(JSON.stringify(result.ops, undefined, 2));
 //   });
 // //db.close();
+
 // Insert New doc into Users (name, age, location)
-const db = client.db('Mytodo')
-db.collection('Users').insertOne({
-  name : "Vikas Yadav",
-  age : 32,
-  location : "India"
-},(err, result) => {
-  if(err){
-    console.log('Opps! Error', err);
-  }
-  console.log('New Value Added');
-  console.log(JSON.stringify(result.ops, undefined, 3));
-});
+// const db = client.db('Mytodo')
+// db.collection('Users').insertOne({
+//   name : "Rahul Singh",
+//   age : 22,
+//   location : "India"
+// },(err, result) => {
+//   if(err){
+//     console.log('Opps! Error', err);
+//   }
+//   console.log('New Value Added with id ');
+//
+//   //console.log(JSON.stringify(result.ops, undefined, 3));
+// //For Showing in Form of JSON [^]
+//   //console.log(result.ops[0]._id);
+// //For Showing only id [^]
+// console.log(result.ops[0]._id.getTimestamp());
+// //Gettimestamp is the function but it doesn't take any argument
+// //For Showing id with Time [^]
+// });
   //for v3 [v]
   client.close();
 });
