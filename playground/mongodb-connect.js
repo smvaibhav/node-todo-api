@@ -2,12 +2,18 @@ const MongoClient = require('mongodb').MongoClient;
 // for v2 [v]
 //MongoClient.connect('mongodb://localhost:27017/Mytodo', (err, db) => {
 //for v3 [v]
+// Object Structuring in ES6
+var user = {name:'Vaibhav', age: 22 };
+var {name} = user;
+console.log(name);
+
 MongoClient.connect('mongodb://localhost:27017/Mytodo', (err, client) => {
   if (err) {
-    return console.log('MongoDB Connection Error');
+    //console.clear();
+    return console.log('Opps! MongoDB Connection Error');
   }
-  console.clear();
-  console.log('MongoDB Connected');
+  //console.clear();
+  console.log('Yeah! MongoDB Connected');
 
 // //for v3 [v]
 // const db = client.db('Mytodo')
