@@ -21,10 +21,10 @@ MongoClient.connect('mongodb://localhost:27017/Mytodo', (err, client) => {
     //   console.log(result);
     // });
 
-    // // findOneAndDelete    -- first find then delete from top
-    // db.collection('Todos').findOneAndDelete({completed: false}).then((result) => {
-    //   console.log(result);
-    // });
+    // findOneAndDelete    -- first find then delete from top
+    db.collection('Todos').findOneAndDelete({completed: false}).then((result) => {
+      console.log(result);
+    });
 
   //client.close();
 });
