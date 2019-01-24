@@ -1,8 +1,9 @@
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
+// mongoose.Promise = global.Promise;
+// mongoose.connect('mongodb://localhost:27017/Mytodo');
+// // [^] Mongos Config Code inside db folder
 
-mongoose.Promise = global.Promise;
-
-mongoose.connect('mongodb://localhost:27017/Mytodo');
+var {mongoose} = require('./db/mongoose'); //link
 
 // Normal and with Validators and Scemas
 var Todo = mongoose.model('Todo', {
