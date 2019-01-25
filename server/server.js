@@ -9,6 +9,7 @@ var {User} = require('./models/user');
 var app = express();
 
 app.use(bodyParser.json());
+
 // For insert
 app.post('/todos', (req, res) => {
  //  console.log(req.body);
