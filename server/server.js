@@ -1,67 +1,36 @@
-// var mongoose = require('mongoose');
-// mongoose.Promise = global.Promise;
-// mongoose.connect('mongodb://localhost:27017/Mytodo');
-// // [^] Mongos Config Code inside db folder
+var express = require('express');
+var bodyParser = require('body-parser');
 
-var {mongoose} = require('./db/mongoose'); //link
 
-// Normal and with Validators and Scemas
-var Todo = mongoose.model('Todo', {
-  todo: {
-    type: String,
-  //  required: true, // Required Vaildators
-  //  trim: true  // Trim Valodators for blank space
-  },
-  completed: {
-    type: Boolean,
-  //  default: false // Default Value
-  },
-  completedAt: {
-    type: Number,
-  //  default: null // Default Value
-  }
+var {mongoose} = require('./db/mongoose'); //link Connection
+var {Todo} = require('./models/todo'); //link models
+var {User} = require('./models/user');
+
+var app = express();
+
+app.use(bodyParser.json());
+// For insert
+app.post('/todos', (req, res) => {
+ //  console.log(req.body);
+   var todo = new Todo({
+     teext: req.body.teext,
+     completed: req.body.completed
+   });
+
+   todo.save().then((doc) => {
+     res.send(doc);
+   }, (e) => {
+     res.status(400).send(e);
+   });
+
 });
 
-// //Validators test
-// var otherTodo = new Todo({});
-
-//Normal Insertion
-var newTodo = new Todo({
-  todo : 'Eat Dinner',
-  completed : false
+app.listen(3000, () => {
+  console.log ('Yeah! Started on port 3000');
 });
 
-newTodo.save().then((doc) => {
-  console.log('Saved todo :\n', doc);
-}, (e) => {
-  console.log('Unable to save todo')
-});
 
-// //Chalange by Udemy
-// var otherTodo = new Todo({
-//   todo : 'Bye Home',
-//   completed : true ,
-//   completedAt : 156
-// });
-//
-// otherTodo.save().then((doc) => {
-//   console.log(JSON.stringify(doc, undefined, 2));
-// }, (e) => {
-//   console.log('Error', e);
-// });
-
-// // Chalange by Udemy (new user model) and email validation with trim and minlength 1
-// var User = mongoose.model('User', {
-//     email: {
-//       type: String,
-//       required: true,
-//       trim: true,
-//       minlength: 1
-//     }
-// });
-//
-// //instance of this model
-//
+// //instance of this model ./models/user.js
 // var user = new User({
 //   email: '   imvaibhavyadav@gmail.com   '
 // });
