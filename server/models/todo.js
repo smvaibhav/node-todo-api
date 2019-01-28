@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'); //create varible
 // Normal Model with Validators and Scemas
 var Todo = mongoose.model('Todo', {
-  teext: {
+  text: {
       type: String,
       required: true // Required Vaildators
       //trim: true  // Trim Valodators for blank space
@@ -12,7 +12,7 @@ var Todo = mongoose.model('Todo', {
   },
   completedAt: {
     type: Number,
-  //  default: null // Default Value
+    default: null // Default Value
   }
 });
 // Export the model
