@@ -10,11 +10,11 @@ var app = express();
 
 app.use(bodyParser.json());
 
-// For insert
+// For insert or POST
 app.post('/todos', (req, res) => {
  //  console.log(req.body);
    var todo = new Todo({
-     teext: req.body.teext,
+     text: req.body.text,
      completed: req.body.completed
    });
 
@@ -23,7 +23,15 @@ app.post('/todos', (req, res) => {
    }, (e) => {
      res.status(400).send(e);
    });
+});
 
+// For Fetch or GET
+app.get('/todos', (req, res) => {
+  Todo.find().then((todos) => {
+    res.send({todos});
+  }, (e) => {
+    res.status(400).send(e);
+  })
 });
 
 app.listen(3000, () => {
