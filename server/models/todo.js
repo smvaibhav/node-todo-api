@@ -12,7 +12,7 @@ var Todo = mongoose.model('Todo', {
   },
   completedAt: {
     type: Number,
-  //  default: null // Default Value
+    default: null // Default Value
   }
 });
 // Export the model
