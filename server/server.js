@@ -8,6 +8,7 @@ var {Todo} = require('./models/todo'); //link models
 var {User} = require('./models/user');
 
 var app = express();
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -111,8 +112,8 @@ app.patch('/todos/:id', (req, res) => {
   })
 });
 
-app.listen(3000, () => {
-  console.log ('Yeah! Started on port 3000');
+app.listen(port, () => {
+  console.log (`Yeah! Started up at port ${port}`);
 });
 
 
