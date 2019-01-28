@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-
+var {ObjectID} = require('mongodb');
 
 var {mongoose} = require('./db/mongoose'); //link Connection
 var {Todo} = require('./models/todo'); //link models
@@ -33,6 +33,37 @@ app.get('/todos', (req, res) => {
     res.status(400).send(e);
   })
 });
+
+// GET /todos/12345
+app.get('/todos/:id', (req, res) =>{
+  var id = req.params.id;
+  //valid id using isValid
+  //404 -- send back to empty body
+
+  // findById
+    //  success
+      // if todo --send it back
+      // if no todo - send back 404 with empty body
+    //  error
+      // 400 - and send empty id back
+
+  if (!ObjectID.isValid(id)){
+    return res.status(404).send();
+  }
+
+  Todo.findById(id).then((todo) => {
+    if (!todo) {
+      return res.status(400).send();
+    }
+    res.send({todo});
+  }).catch((e) => {
+    res.status(400).send();
+  })
+
+  //console.log(req.params); //test purpose
+  // res.send(req.params); //for fatching like { id : 12345 }
+});
+
 
 app.listen(3000, () => {
   console.log ('Yeah! Started on port 3000');
