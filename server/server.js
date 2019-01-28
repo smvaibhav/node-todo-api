@@ -64,6 +64,24 @@ app.get('/todos/:id', (req, res) =>{
   // res.send(req.params); //for fatching like { id : 12345 }
 });
 
+// for delete
+app.delete('/todos/:id',(req,res) => {
+  var id = req.params.id;
+
+    if (!ObjectID.isValid(id)) {
+      return res.status(404).send();
+    }
+
+    Todo.findByIdAndRemove(id).then((todo) => {
+      if (!todo) {
+        return res.status(404).send();
+      }
+
+      res.send(todo);
+    }).catch((e) => {
+      res.status(400).send();
+    });
+});
 
 app.listen(3000, () => {
   console.log ('Yeah! Started on port 3000');
@@ -80,3 +98,4 @@ app.listen(3000, () => {
 // },(e) =>{
 //    console.log('unable to save' ,e );
 // });
+//module.exports = {app};
