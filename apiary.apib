@@ -166,6 +166,12 @@ and Enter New Value inside Body Which You Want to Update
 
 ### Click Here  [PATCH]
 
++ Request (application/json)
+
+        {
+             "tododone" : true
+        }
+        
 + Response 201 (application/json)
   + Headers
 
@@ -174,7 +180,15 @@ and Enter New Value inside Body Which You Want to Update
     + Body 
     
             {
-                "tododone": True
+              "todo": {
+                "_id": "5c528c4cb534961600962a04",
+                "mtodo": "Lunch with Lily",
+                "tododue": "Fri, Jan 18",
+                "todonotes": "Not any Notes",
+                "__v": 0,
+                "createdAt": "2019-01-31T05:49:00.446Z",
+                "tododone": true
+              }
             }
 
 + Response 404 (application/json)
