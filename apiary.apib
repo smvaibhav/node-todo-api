@@ -1,0 +1,94 @@
+FORMAT: 1A
+HOST: https://aqueous-island-14841.herokuapp.com/todos/
+
+# My To Dos API Documentation 
+
+Api documentation for My To Dos Using MongoDB or node js db
+
+## Show ToDos [/show]
+You can list all todo using this action. check here to check
+
+### Click Here [GET]
+
++ Response 200 (application/json)
+
+    + Body 
+    
+            {
+            "todos": [
+                {
+                    "_id": "5c518c09951aa646d11171df",
+                    "mtodo": "Lunch with Lily",
+                    "tododue": "Fri, Jan 18",
+                    "todonotes": "Not any Notes",
+                    "completedAt": "2019-01-31T04:42:02.106Z",
+                    "tododone": false
+                }
+            ]
+            }
+
++ Response 500 (application/json)
+
+    + Body
+            
+            {
+                "success" : true,
+                "code"    : 500,
+                "message" : "Cannot process your request, Internal server error."
+            }
+
+## Show by id [/{id}]
++ Parameters
+    + id (required) - Provide id which you want to show
+
+### Click Here [GET]
+
++ Response 200 (application/json)
+
+    + Body 
+    
+            {
+            "todos": [
+                {
+                    "_id": "5c518c09951aa646d11171df",
+                    "mtodo": "Lunch with Lily",
+                    "tododue": "Fri, Jan 18",
+                    "todonotes": "Not any Notes",
+                    "completedAt": "2019-01-31T04:42:02.106Z",
+                    "tododone": false
+                }
+            ]
+            }
+
+
+
+## Create ToDo [/todos/]
+
+### Create a New Todo [POST]
+
+You may create your own todo using this action. It takes a JSON
+object containing a todo and a collection of todos.
+
++ Request (application/json)
+
+        {
+             "text": "Eat Bhojan",
+             "completedAt": 1548707347115,
+             "completed": true
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /todos
+
+    + Body
+
+            {
+              "__v": 0,
+              "text": "Hey Add New Todo Here",
+              "_id": "5c519e8f27ea67160005470b",
+              "completedAt": null,
+              "completed": true
+            }
