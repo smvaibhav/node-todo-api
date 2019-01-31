@@ -3,7 +3,14 @@ HOST: https://aqueous-island-14841.herokuapp.com/todos/
 
 # My ToDos API Documentation 
 
-Api documentation for ***My ToDos*** Using MongoDB or node js db
+Api documentation for ***My ToDos*** Using MongoDB or Node Js 
+<br>
+<br>
+Author <br>
+**Vaibhav Yadav** <br>
+*Surmount Softech Solutions Pvt. Ltd.*
+<br>
+
 #### Schemas
   Key           | Type
   ------------- | -------------
@@ -12,6 +19,48 @@ Api documentation for ***My ToDos*** Using MongoDB or node js db
   todonotes     | String
   tododone      | Boolean
 
+
+## Create ToDo [/insert/]
+You may **Create** todo using json request for click here to add new todo
+
+### Click Here [POST]
+
+
++ Request (application/json)
+
+        {
+             "mtodo": "Hey It's my first live todo",
+             "tododue": "Mon, Feb 04",
+             "todonotes": "Yes my First Note",
+             "tododone" : false
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+        
+            Location: /{id}/insert
+
+    + Body
+
+            {
+                "__v": 0,
+                "mtodo": "Hey It's my first live todo",
+                "tododue": "Mon, Feb 04",
+                "todonotes": "Yes my First Note",
+                "_id": "5c52b01fb534961600962a05",
+                "createdAt": "2019-01-31T08:21:51.608Z",
+                "tododone": false
+            }
+            
++ Response 500 (application/json)
+
+    + Body
+            
+            {
+                "message" : "Cannot process your request, Internal server error."
+            }
+            
 ## Show ToDos [/show]
 You can **list** all todo using this action. check here to check
 
@@ -68,51 +117,10 @@ perameters for example pass '5c518c09951aa646d11171df'. Click below to Check
             }
 
 + Response 404 (text)
+   
+        No Todo found Client Side Error.
+         
 
-        No Todo found Client Side Error 
-
-
-## Create ToDo [/insert/]
-You may **Create** todo using json request for click here to add new todo
-
-### Click Here [POST]
-
-
-+ Request (application/json)
-
-        {
-             "mtodo": "Hey It's my first live todo",
-             "tododue": "Mon, Feb 04",
-             "todonotes": "Yes my First Note",
-             "tododone" : false
-        }
-
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /insert
-
-    + Body
-
-            {
-                "__v": 0,
-                "mtodo": "Hey It's my first live todo",
-                "tododue": "Mon, Feb 04",
-                "todonotes": "Yes my First Note",
-                "_id": "5c52b01fb534961600962a05",
-                "createdAt": "2019-01-31T08:21:51.608Z",
-                "tododone": false
-            }
-            
-+ Response 500 (application/json)
-
-    + Body
-            
-            {
-                "message" : "Cannot process your request, Internal server error."
-            }
-            
 
 ## Delete Todo [/{id}/delete]
 
@@ -161,7 +169,7 @@ and Enter New Value inside Body Which You Want to Update
 + Response 201 (application/json)
   + Headers
 
- 
+            Location: /{id}/update
             
     + Body 
     
