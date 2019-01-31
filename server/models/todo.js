@@ -19,7 +19,7 @@ var Todo = mongoose.model('Todo', {
     required: true,
     default: false // Default Value
   },
-  completedAt: {
+  createdAt: {
     type: Date,
     default: Date.now // Default Value
   }
