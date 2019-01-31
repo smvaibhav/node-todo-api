@@ -37,7 +37,8 @@ You can list all todo using this action. check here to check
                 "message" : "Cannot process your request, Internal server error."
             }
 
-## Show by id [/{id}]
+## Show by :id [/{id}/show]
+You can list a perticular todo by passing id on perameters for example pass '5c518c09951aa646d11171df'. Click below to Check
 + Parameters
     + id (required) - Provide id which you want to show
 
@@ -60,35 +61,40 @@ You can list all todo using this action. check here to check
             ]
             }
 
++ Response 404 (text)
+
+        No Todo found Client Side Error 
 
 
-## Create ToDo [/todos/]
+## Create ToDo [/insert/]
 
 ### Create a New Todo [POST]
 
-You may create your own todo using this action. It takes a JSON
-object containing a todo and a collection of todos.
+You may create todo using json request for click here to add new todo
 
 + Request (application/json)
 
         {
-             "text": "Eat Bhojan",
-             "completedAt": 1548707347115,
-             "completed": true
+             "mtodo": "Hey It's my first live todo",
+             "tododue": "Mon, Feb 04",
+             "todonotes": "Yes my First Note",
+             "tododone" : false
         }
 
 + Response 201 (application/json)
 
     + Headers
 
-            Location: /todos
+            Location: /insert
 
     + Body
 
             {
-              "__v": 0,
-              "text": "Hey Add New Todo Here",
-              "_id": "5c519e8f27ea67160005470b",
-              "completedAt": null,
-              "completed": true
+                "__v": 0,
+                "mtodo": "Hey It's my first live todo",
+                "tododue": "Mon, Feb 04",
+                "todonotes": "Yes my First Note",
+                "_id": "5c52b01fb534961600962a05",
+                "createdAt": "2019-01-31T08:21:51.608Z",
+                "tododone": false
             }
