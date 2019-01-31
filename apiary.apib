@@ -1,12 +1,19 @@
 FORMAT: 1A
 HOST: https://aqueous-island-14841.herokuapp.com/todos/
 
-# My To Dos API Documentation 
+# My ToDos API Documentation 
 
-Api documentation for My To Dos Using MongoDB or node js db
+Api documentation for ***My ToDos*** Using MongoDB or node js db
+#### Schemas
+  Key           | Type
+  ------------- | -------------
+  mtodo         | String
+  tododue       | String
+  todonotes     | String
+  tododone      | Boolean
 
 ## Show ToDos [/show]
-You can list all todo using this action. check here to check
+You can **list** all todo using this action. check here to check
 
 ### Click Here [GET]
 
@@ -32,13 +39,12 @@ You can list all todo using this action. check here to check
     + Body
             
             {
-                "success" : true,
-                "code"    : 500,
                 "message" : "Cannot process your request, Internal server error."
             }
 
 ## Show by :id [/{id}/show]
-You can list a perticular todo by passing id on perameters for example pass '5c518c09951aa646d11171df'. Click below to Check
+You can **list** a perticular todo by passing id on 
+perameters for example pass '5c518c09951aa646d11171df'. Click below to Check
 + Parameters
     + id (required) - Provide id which you want to show
 
@@ -67,10 +73,10 @@ You can list a perticular todo by passing id on perameters for example pass '5c5
 
 
 ## Create ToDo [/insert/]
+You may **Create** todo using json request for click here to add new todo
 
-### Create a New Todo [POST]
+### Click Here [POST]
 
-You may create todo using json request for click here to add new todo
 
 + Request (application/json)
 
@@ -98,3 +104,21 @@ You may create todo using json request for click here to add new todo
                 "createdAt": "2019-01-31T08:21:51.608Z",
                 "tododone": false
             }
+            
++ Response 500 (application/json)
+
+    + Body
+            
+            {
+                "message" : "Cannot process your request, Internal server error."
+            }
+            
+
+## Delete Todo [/{id}/delete]
+
+You can **Delete** a perticular.
+
++ Parameters
+    + id (required) - Provide id which you want to Delete
+
+### Click Here [DELETE]
