@@ -116,9 +116,63 @@ You may **Create** todo using json request for click here to add new todo
 
 ## Delete Todo [/{id}/delete]
 
-You can **Delete** a perticular.
+You can **Delete** a perticular todo by passing id to perameter
 
 + Parameters
     + id (required) - Provide id which you want to Delete
 
-### Click Here [DELETE]
+### Click Here  [DELETE]
+
++ Response 201 (application/json)
+  + Headers
+
+            Location: /{id}/delete
+            
+    + Body 
+    
+            {
+                "_id": "5c52b01fb534961600962a05",
+                "mtodo": "Hey It's my first live todo",
+                "tododue": "Mon, Feb 04",
+                "todonotes": "Yes my First Note",
+                "__v": 0,
+                "createdAt": "2019-01-31T08:21:51.608Z",
+                "tododone": false
+             }
+
++ Response 404 (application/json)
+
+    + Body
+            
+            {
+                "message" : "The id You Enter is not Found 404 Error."
+            }
+
+## Update Todo [/{id}/update]
+
+You can **Update** a perticular todo by passing id to perameter
+and Enter New Value inside Body Which You Want to Update
+
++ Parameters
+    + id (required) - Provide id which you want to Update
+
+### Click Here  [PATCH]
+
++ Response 201 (application/json)
+  + Headers
+
+ 
+            
+    + Body 
+    
+            {
+                "tododone": True
+            }
+
++ Response 404 (application/json)
+
+    + Body
+            
+            {
+                "message" : "The id You Enter is not Found 404 Error."
+            }
