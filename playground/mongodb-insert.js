@@ -12,9 +12,11 @@ MongoClient.connect('mongodb://localhost:27017/Mytodo', (err, client) => {
   const db = client.db('Mytodo')
 
 // Create Collections  Todos is Collection name
-    db.collection('Todos').insertOne({
-      todo: 'Hey iRIS Here',
-      completed: true
+    db.collection('todos').insertOne({
+      mtodo: 'Lunch with Lily',
+      tododue: 'Fri, Jan 18',
+      todonotes: 'Not any Notes',
+      tododone: true
     }, (err, result) => {
       if(err){
         return console.log('Opps! Error', err);
@@ -36,17 +38,17 @@ MongoClient.connect('mongodb://localhost:27017/Mytodo', (err, client) => {
     // });
 
     // Insert new doc into Users (name, age, location)
-    db.collection('Users').insertOne({
-      name: 'Vaibhav',
-      age: 25,
-      location: 'India'
-    }, (err, result) => {
-      if (err) {
-        return console.log('Unable to insert user', err);
-      }
-
-      console.log(result.ops[0]._id.getTimestamp());
-    });
+    // db.collection('Users').insertOne({
+    //   name: 'Vaibhav',
+    //   age: 25,
+    //   location: 'India'
+    // }, (err, result) => {
+    //   if (err) {
+    //     return console.log('Unable to insert user', err);
+    //   }
+    //
+    //   console.log(result.ops[0]._id.getTimestamp());
+    // });
 
   //for v3 [v]
   client.close();

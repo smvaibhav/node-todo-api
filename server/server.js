@@ -13,11 +13,13 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 // For insert or POST
-app.post('/todos', (req, res) => {
+app.post('/todos/insert', (req, res) => {
  //  console.log(req.body);
    var todo = new Todo({
-     text: req.body.text,
-     completed: req.body.completed
+     mtodo: req.body.mtodo,
+     tododue: req.body.tododue,
+     todonotes: req.body.todonotes,
+     tododone: req.body.tododone,
    });
 
    todo.save().then((doc) => {
@@ -28,7 +30,7 @@ app.post('/todos', (req, res) => {
 });
 
 // For Fetch or GET
-app.get('/todos', (req, res) => {
+app.get('/todos/show', (req, res) => {
   Todo.find().then((todos) => {
     res.send({todos});
   }, (e) => {
@@ -36,8 +38,8 @@ app.get('/todos', (req, res) => {
   })
 });
 
-// GET /todos/12345
-app.get('/todos/:id', (req, res) =>{
+// GET by id /todos/12345
+app.get('/todos/:id/show', (req, res) =>{
   var id = req.params.id;
   //valid id using isValid
   //404 -- send back to empty body
@@ -67,7 +69,7 @@ app.get('/todos/:id', (req, res) =>{
 });
 
 // for delete
-app.delete('/todos/:id',(req,res) => {
+app.delete('/todos/:id/delete',(req,res) => {
   var id = req.params.id;
 
     if (!ObjectID.isValid(id)) {
@@ -86,18 +88,18 @@ app.delete('/todos/:id',(req,res) => {
 });
 
 // for update we use patch method
-app.patch('/todos/:id', (req, res) => {
+app.patch('/todos/:id/update', (req, res) => {
   var id = req.params.id;
-  var body = _.pick(req.body, ['text', 'completed']);
+  var body = _.pick(req.body, ['mtodo', 'tododue', 'todonotes', 'tododone']);
 
   if (!ObjectID.isValid(id)) {
     return res.status(404).send();
   }
 
-  if (_.isBoolean(body.completed) && body.completed) {
+  if (_.isBoolean(body.tododone) && body.tododone) {
     body.completedAt = new Date().getTime();
   } else {
-    body.completed = false;
+    body.tododone = false;
     body.completedAt = null;
   }
 

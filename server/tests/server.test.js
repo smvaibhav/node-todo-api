@@ -6,9 +6,15 @@ const {app} = require('./../server');
 const {Todo} = require('./../models/todo');
 
 const todos = [{
-  text: 'Goto Home'
+  mtodo: 'Lunch with Lily',
+  tododue: 'Fri, Jan 18',
+  todonotes: 'Not any Notes',
+  tododone: 'No'
 }, {
-  text: 'Watch Movie'
+  mtodo: 'Visit N. Hirano',
+  tododue: 'Sat, Jan 26',
+  todonotes: 'Conform the Meeting ahead of time',
+  tododone: 'No'
 }];
 
 beforeEach((done) => {
@@ -18,7 +24,6 @@ beforeEach((done) => {
 });
 
 //test for post
-
 describe('POST /todos', () => {
   it('should create a new todo', (done) => {
     var text = 'Test todo text';

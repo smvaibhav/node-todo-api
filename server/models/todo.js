@@ -1,18 +1,27 @@
 var mongoose = require('mongoose'); //create varible
 // Normal Model with Validators and Scemas
 var Todo = mongoose.model('Todo', {
-  text: {
+  mtodo: {
       type: String,
-      required: true // Required Vaildators
-      //trim: true  // Trim Valodators for blank space
+      required: true, // Required Vaildators
+      trim: true  // Trim Valodators for blank space
   },
-  completed: {
-      type: Boolean,
-      default: false // Default Value
+  tododue: {
+      type: String,
+      required: true
+  },
+  todonotes: {
+    type: String,
+    trim: true // Default Value
+  },
+  tododone: {
+    type: Boolean,
+    required: true,
+    default: false // Default Value
   },
   completedAt: {
-    type: Number,
-    default: null // Default Value
+    type: Date,
+    default: Date.now // Default Value
   }
 });
 // Export the model

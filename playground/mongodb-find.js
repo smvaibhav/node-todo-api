@@ -15,7 +15,7 @@ MongoClient.connect('mongodb://localhost:27017/Mytodo', (err, client) => {
  const db = client.db('Mytodo')
 
  //For Finding all
-  db.collection('Todos').find().toArray().then((docs) => {
+  db.collection('todos').find().toArray().then((docs) => {
     console.log('---Todos---');
     console.log(JSON.stringify(docs, undefined, 2));
   }, (err) => {
