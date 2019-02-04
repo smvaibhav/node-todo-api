@@ -121,7 +121,9 @@ app.listen(port, () => {
 
 // //instance of this model ./models/user.js
 // var user = new User({
-//   email: '   imvaibhavyadav@gmail.com   '
+//   username: 'vaibhav',
+//   email: '   imvaibhavyadav@gmail.com   ',
+//   password: 'Vaibhav@123'
 // });
 // user.save().then((doc)=>{
 //   console.log('User Saved', doc);
@@ -129,4 +131,5 @@ app.listen(port, () => {
 // },(e) =>{
 //    console.log('unable to save' ,e );
 // });
+
 //module.exports = {app};
