@@ -1,0 +1,200 @@
+FORMAT: 1A
+HOST: https://aqueous-island-14841.herokuapp.com/todos/
+
+# My ToDos API Documentation 
+
+Api documentation for ***My ToDos*** Using MongoDB or Node Js 
+<br>
+<br>
+Author <br>
+**Vaibhav Yadav** <br>
+*Surmount Softech Solutions Pvt. Ltd.*
+<br>
+
+#### Schemas
+  Key           | Type
+  ------------- | -------------
+  mtodo         | String
+  tododue       | String
+  todonotes     | String
+  tododone      | Boolean
+
+
+## Create ToDo [/insert/]
+You may **Create** todo using json request for click here to add new todo
+
+### Click Here [POST]
+
+
++ Request (application/json)
+
+        {
+             "mtodo": "Hey It's my first live todo",
+             "tododue": "Mon, Feb 04",
+             "todonotes": "Yes my First Note",
+             "tododone" : false
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+        
+            Location: /{id}/insert
+
+    + Body
+
+            {
+                "__v": 0,
+                "mtodo": "Hey It's my first live todo",
+                "tododue": "Mon, Feb 04",
+                "todonotes": "Yes my First Note",
+                "_id": "5c52b01fb534961600962a05",
+                "createdAt": "2019-01-31T08:21:51.608Z",
+                "tododone": false
+            }
+            
++ Response 500 (application/json)
+
+    + Body
+            
+            {
+                "message" : "Cannot process your request, Internal server error."
+            }
+            
+## Show ToDos [/show]
+You can **list** all todo using this action. check here to check
+
+### Click Here [GET]
+
++ Response 200 (application/json)
+
+    + Body 
+    
+            {
+            "todos": [
+                {
+                    "_id": "5c518c09951aa646d11171df",
+                    "mtodo": "Lunch with Lily",
+                    "tododue": "Fri, Jan 18",
+                    "todonotes": "Not any Notes",
+                    "completedAt": "2019-01-31T04:42:02.106Z",
+                    "tododone": false
+                }
+            ]
+            }
+
++ Response 500 (application/json)
+
+    + Body
+            
+            {
+                "message" : "Cannot process your request, Internal server error."
+            }
+
+## Show by :id [/{id}/show]
+You can **list** a perticular todo by passing id on 
+perameters for example pass '5c518c09951aa646d11171df'. Click below to Check
++ Parameters
+    + id (required) - Provide id which you want to show
+
+### Click Here [GET]
+
++ Response 200 (application/json)
+
+    + Body 
+    
+            {
+            "todos": [
+                {
+                    "_id": "5c518c09951aa646d11171df",
+                    "mtodo": "Lunch with Lily",
+                    "tododue": "Fri, Jan 18",
+                    "todonotes": "Not any Notes",
+                    "completedAt": "2019-01-31T04:42:02.106Z",
+                    "tododone": false
+                }
+            ]
+            }
+
++ Response 404 (text)
+   
+        No Todo found Client Side Error.
+         
+
+
+## Delete Todo [/{id}/delete]
+
+You can **Delete** a perticular todo by passing id to perameter
+
++ Parameters
+    + id (required) - Provide id which you want to Delete
+
+### Click Here  [DELETE]
+
++ Response 201 (application/json)
+  + Headers
+
+            Location: /{id}/delete
+            
+    + Body 
+    
+            {
+                "_id": "5c52b01fb534961600962a05",
+                "mtodo": "Hey It's my first live todo",
+                "tododue": "Mon, Feb 04",
+                "todonotes": "Yes my First Note",
+                "__v": 0,
+                "createdAt": "2019-01-31T08:21:51.608Z",
+                "tododone": false
+             }
+
++ Response 404 (application/json)
+
+    + Body
+            
+            {
+                "message" : "The id You Enter is not Found 404 Error."
+            }
+
+## Update Todo [/{id}/update]
+
+You can **Update** a perticular todo by passing id to perameter
+and Enter New Value inside Body Which You Want to Update
+
++ Parameters
+    + id (required) - Provide id which you want to Update
+
+### Click Here  [PATCH]
+
++ Request (application/json)
+
+        {
+             "tododone" : true
+        }
+        
++ Response 201 (application/json)
+  + Headers
+
+            Location: /{id}/update
+            
+    + Body 
+    
+            {
+              "todo": {
+                "_id": "5c528c4cb534961600962a04",
+                "mtodo": "Lunch with Lily",
+                "tododue": "Fri, Jan 18",
+                "todonotes": "Not any Notes",
+                "__v": 0,
+                "createdAt": "2019-01-31T05:49:00.446Z",
+                "tododone": true
+              }
+            }
+
++ Response 404 (application/json)
+
+    + Body
+            
+            {
+                "message" : "The id You Enter is not Found 404 Error."
+            }
