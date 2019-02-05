@@ -1,22 +1,46 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const validator = require('validator');
+
+// {
+//   email: 'imvaibhavyadav@gmail.com',
+//   password: 'gdhgshjgywgeygioqzxbz',
+//   tokens: [{
+//     access:'auth',
+//     token: 'hjfhkdfhooinxmchuwh'
+//   }]
+// }
+
+// validator:(value) => {
+//   return validator.isEmail(value);  //validator without lib
+// },
+
 // Chalange by Udemy (new user model) and email validation with trim and minlength 1
 var User = mongoose.model('User', {
-    username: {
-      type: String,
-      trim: true,
-    },
     email: {
       type: String,
       unique: true,
       required: true,
       trim: true,
-      minlength: 1
+      validate:{
+        validator: validator.isEmail, // formal method 13to15
+        message: '{VALUE} is not a valid email'
+      }
     },
     password: {
       type: String,
       required: true,
-      trim: true,
-      minlength: 8
-    }
+      minlength: 6
+    },
+    //use for tokens array
+    tokens: [{
+      access:{
+        type: String,
+        required: true
+      },
+      token:{
+        type: String,
+        required: true
+      }
+    }]
 });
  module.exports = {User};

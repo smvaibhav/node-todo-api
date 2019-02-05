@@ -15,6 +15,8 @@ const port = process.env.PORT; //for test
 
 app.use(bodyParser.json());
 
+///// for Todos
+
 // For insert or POST
 app.post('/todos/insert', (req, res) => {
  //  console.log(req.body);
@@ -116,6 +118,33 @@ app.patch('/todos/:id/update', (req, res) => {
     res.status(400).send();
   })
 });
+
+///// for Users  //post /users
+
+// for normal method [v]
+// app.post('/users/insert', (req, res) => {
+//   var todo = new User({
+//     email: req.body.email,
+//     password: req.body.password
+//   });
+//   todo.save().then((doc) => {
+//     res.send(doc);
+//   }, (e) => {
+//     res.status(400).send(e);
+//   });
+// });
+app.post('/users/insert', (req, res) => {
+ var body = _.pick(req.body, ['email', 'password']);
+ var user = new User(body);
+
+ // for saving in debug
+ user.save().then((user) => {
+   res.send(user);
+ }).catch((e) => {
+   res.status(400).send(e);
+ })
+});
+
 
 app.listen(port, () => {
   console.log (`Yeah! Started up at port ${port}`);
