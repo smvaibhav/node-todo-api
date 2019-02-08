@@ -1,6 +1,21 @@
 const {SHA256} = require('crypto-js');
 
-// This code for playground only for the server we use jsonwebtoken packege 
+const jwt = require('jsonwebtoken');
+
+var data = {
+  id : 10
+};
+
+var token = jwt.sign(data, 'hey');  // jwt.sign
+console.log('Token is : ',token);
+
+var decoded = jwt.verify(token, 'hey'); // jwt.verify
+console.log('Decoded Message : ', decoded );
+
+
+
+
+// This code for playground only for the server we use jsonwebtoken packege
 
 // var message = 'Hey Vaibhav Yadav from Here.' ;
 // var hash = SHA256(message).toString();
