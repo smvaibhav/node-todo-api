@@ -138,8 +138,11 @@ app.post('/users/insert', (req, res) => {
  var user = new User(body);
 
  // for saving in debug
- user.save().then((user) => {
-   res.send(user);
+ user.save().then(() => {
+   return user.generateAuthToken();
+   // res.send(user);
+ }).then((token) => {
+   res.header('x-auth', token).send(user);
  }).catch((e) => {
    res.status(400).send(e);
  })
