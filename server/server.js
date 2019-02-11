@@ -7,7 +7,7 @@ const {ObjectID} = require('mongodb');
 
 var {mongoose} = require('./db/mongoose'); //link Connection
 var {Todo} = require('./models/todo'); //link models
-var {User} = require('.././dummy/user');
+var {User} = require('./models/user');
 
 var app = express();
 const port = process.env.PORT; //for test
@@ -119,9 +119,9 @@ app.patch('/todos/:id/update', (req, res) => {
   })
 });
 
-///// for Users  //post /users
-
-// for normal method [v]
+/// for Users  //post /users
+//
+// // for normal method [v]
 // app.post('/users/insert', (req, res) => {
 //   var todo = new User({
 //     email: req.body.email,
@@ -133,6 +133,7 @@ app.patch('/todos/:id/update', (req, res) => {
 //     res.status(400).send(e);
 //   });
 // });
+
 app.post('/users/insert', (req, res) => {
  var body = _.pick(req.body, ['email', 'password']);
  var user = new User(body);

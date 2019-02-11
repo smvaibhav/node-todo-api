@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
 
-var UserSchema = new.mongoose.Schema({
+const _ = require('lodash'); //for sec purpuse
+
+var UserSchema = new mongoose.Schema({
       email: {
         type: String,
         unique: true,
@@ -31,6 +33,15 @@ var UserSchema = new.mongoose.Schema({
       }]
 });
 
+// for return security purpose
+
+UserSchema.methods.toJSON = function() {
+  var user = this;
+  var userObject = user.toObject();
+
+  return _.pick(userObject, ['_id' , 'email']);
+}
+
 UserSchema.methods.generateAuthToken = function ()  {
       var user = this;
       var access = 'auth';
@@ -44,4 +55,5 @@ UserSchema.methods.generateAuthToken = function ()  {
   };
 // Chalange by Udemy (new user model) and email validation with trim and minlength 1
 var User = mongoose.model('User', UserSchema);
- module.exports = {User};
+
+module.exports = {User};
