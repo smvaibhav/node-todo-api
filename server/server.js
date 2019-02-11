@@ -7,7 +7,7 @@ const {ObjectID} = require('mongodb');
 
 var {mongoose} = require('./db/mongoose'); //link Connection
 var {Todo} = require('./models/todo'); //link models
-var {User} = require('./models/user');
+var {User} = require('.././dummy/user');
 
 var app = express();
 const port = process.env.PORT; //for test
